@@ -1,0 +1,57 @@
+
+
+<div class="container">
+
+<VarGrid>
+	<VarGridDataSource [methodType]="POST" [dataOrigin]="remote" 
+		[loadOnInit]="true"  [url]="url" [serverType]="spring-datarest">
+		{
+		"url":"http://localhost:8080/ebys/datarest/persons"
+		}
+	</VarGridDataSource>
+	
+	<VarGridRemoteDataProviderMapping>
+		{
+		    "in":{
+			    "jsonXPath":
+			    	{
+				    	"list": "_embedded.persons",
+				    	"pageSize": "page.size",
+				    	"pageIndex": "page.number",
+				    	"total": "page.totalElements"
+			    	}
+		    },
+		    "out":{
+		    	"pageStart": "page",
+		    	"pageSize": "rows",
+		    	"sortIndex":"sidx",
+		    	"sortOrder": "sort"
+		    }
+		}
+	</VarGridRemoteDataProviderMapping>		
+
+	<VarGridClientPagerParams>
+		{
+		    "id":"id",
+		    "sortIndex": "id",
+		    "pageSize": 10,
+		    "pageSizes": [10,30,50],
+		    "sortOrder": "ASC",
+		    "pageStart": 0
+		}
+	</VarGridClientPagerParams>	
+
+	<VarGridRow>
+		<VarGridColumn label="id" name="id" styleClass="grid_id" ></VarGridColumn>
+		<VarGridColumn label="firstName" name="firstName" styleClass="grid_firstName" ></VarGridColumn>
+		<VarGridColumn label="lastName" name="lastName" styleClass="grid_lastName" ></VarGridColumn>
+		<VarGridColumn label="age" name="age" styleClass="grid_age" ></VarGridColumn>
+		
+		
+	</VarGridRow>
+
+</VarGrid>
+
+
+
+</div>
