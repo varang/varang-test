@@ -1,0 +1,16 @@
+node_modules
+*.log
+*.ts
+!*.d.ts
+.git
+.gitignore
+showcase
+index.html
+typings
+typings.json
+tsconfig.json
+systemjs.config.js
+webpack.config.js
+docs
+prod
+publish.sh
